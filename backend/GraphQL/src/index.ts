@@ -1,10 +1,3 @@
-// import { ApolloServer } from '@apollo/server'
-// import { startStandaloneServer } from '@apollo/server/standalone'
-// import 'dotenv/config.js'
-// import mongoose from 'mongoose'
-// import typeDefs from './schema.js'
-// import resolvers from './resolvers.js'
-
 import { ApolloServer } from '@apollo/server'
 import mongoose from 'mongoose'
 import typeDefs from './schema.js'
@@ -48,9 +41,5 @@ async function main() {
   await new Promise<void>((resolve) => httpServer.listen({ port: 8000}, resolve))
   console.log(`🚀 Server ready at http://localhost:8000/gym-management`)
 
-  // const { url } = await startStandaloneServer(server, {
-  //   listen: { port: 8000 },
-  // })
 
-  // console.log(`🚀  Server ready at: ${url}`)
 }
