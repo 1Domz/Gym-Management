@@ -32,7 +32,8 @@ async function main() {
   app.use(
     '/gym-management',
     cors<cors.CorsRequest>({
-      origin: [ 'http://localhost:3000']
+      origin: [ 'http://localhost:3000', 'https://studio.apollographql.com'],
+      credentials: true,
     }),
     json(),
     expressMiddleware(server)
