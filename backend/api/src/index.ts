@@ -24,7 +24,7 @@ async function main() {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    plugins: [ApolloServerPluginDrainHttpServer({httpServer})]
+    plugins: [ApolloServerPluginDrainHttpServer({httpServer})],
   })
 
   await server.start()
