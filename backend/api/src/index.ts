@@ -21,14 +21,6 @@ async function main() {
   const app = express()
   const httpServer = http.createServer(app)
 
-  const corsOptions = {
-    origin: ['http://localhost:3000', 'https://studio.apollographql.com'],
-    credentials: true,
-  };
-
-  // Apply the cors middleware to your Express app
-  app.use(cors(corsOptions));
-
   const server = new ApolloServer({
     typeDefs,
     resolvers,
@@ -39,7 +31,10 @@ async function main() {
 
   app.use(
     '/gym-management',
-
+    cors<cors.CorsRequest>({
+      origin: [ 'http://localhost:3000', 'https://studio.apollographql.com'],
+      credentials: true,
+    }),
     json(),
     expressMiddleware(server)
   )
