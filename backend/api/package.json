@@ -19,6 +19,7 @@
   "type": "module",
   "scripts": {
     "compile": "tsc",
+    "build": "npm install && npm run build",
     "start": "npm run compile && nodemon ./dist/index.js",
     "dev": "npm install && npm start"
   }
