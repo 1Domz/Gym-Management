@@ -39,8 +39,8 @@ async function main() {
     expressMiddleware(server)
   )
 
-  await new Promise<void>((resolve) => httpServer.listen({ port: 8000}, resolve))
-  console.log(`🚀 Server ready at http://localhost:8000/gym-management`)
+  await new Promise<void>((resolve) => httpServer.listen({}, resolve))
+  console.log(`🚀 Server ready `)
 
 
 }
