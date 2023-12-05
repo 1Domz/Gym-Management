@@ -9,26 +9,29 @@ import express from 'express'
 import http from 'http'
 import pkg  from 'body-parser'
 import cors from 'cors'
+import cookieParser from 'cookie-parser';
 
 const { json} = pkg
 
 
 main().catch((err) => console.log(err))
 
-async function main() {
-  await mongoose.connect(process.env.MONGO_URI)
+export async function main() {
+
+  try {
+    await mongoose.connect(process.env.MONGO_URI)
 
   const app = express()
   const httpServer = http.createServer(app)
-
+  
   const server = new ApolloServer({
     typeDefs,
     resolvers,
     plugins: [ApolloServerPluginDrainHttpServer({httpServer})],
   })
-
+  
   await server.start()
-
+  
   app.use(
     '/gym-management',
     cors<cors.CorsRequest>({
@@ -37,10 +40,18 @@ async function main() {
     }),
     json(),
     expressMiddleware(server)
-  )
+    )
+    
+    app.use(cookieParser())
 
   await new Promise<void>((resolve) => httpServer.listen({port: 8000}, resolve))
   console.log(`🚀 Server ready at http://localhost:8000/gym-management `)
 
+return {app , server}
 
+  } catch (error) {
+    console.error('Error during setup:', error);
+    throw error;
+  }
+  
 }
