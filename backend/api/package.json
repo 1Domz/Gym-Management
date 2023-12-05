@@ -23,7 +23,8 @@
   "type": "module",
   "scripts": {
     "compile": "tsc",
-    "start": "npm run compile && nodemon ./dist/index.js",
-    "dev": "npm install && npm start"
+    "dev": "npm install && npm run compile && nodemon ./dist/index.js",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   }
 }

@@ -9,5 +9,6 @@
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,
       "types": ["node"]
-    }
+    },
+    "exclude": ["**/*.test.ts", "**/*.spec.ts", "node_modules"]
   }
